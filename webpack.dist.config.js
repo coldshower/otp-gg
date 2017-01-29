@@ -9,5 +9,10 @@ module.exports = {
     extensions: ['', '.js', '.jsx', '.json']
   }
   devtool: 'source-map',
-  
+  module: {
+    loaders: {
+      test: /\.jsx?$/,
+      loader: 'babel-loader'
+    }
+  }
 }

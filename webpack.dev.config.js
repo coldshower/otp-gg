@@ -1,9 +1,8 @@
 module.exports = {
-  context: __dirname + '/src',
-  entry: './index.js',
+  entry: './client/src/index.js',
   output: {
     filename: 'bundle.js',
-    path: __dirname + '/src'
+    path: __dirname + '/public'
   },
   resolve: {
     extensions: ['', '.js', 'jsx', 'json']
@@ -13,11 +12,9 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
+        exclude: /node_modules/,
         loader: 'babel-loader'
       }
     ]
-  },
-  loaders: [],
-  plugins: []
-
+  }
 }

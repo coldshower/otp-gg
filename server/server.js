@@ -7,10 +7,14 @@ const app = express();
 
 app.use(morgan('dev'));
 
+app.use(express.static(__dirname + '/../public/'));
+
 app.get('/*', (req, res, next) => {
-  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+  res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
-app.listen(3000, () => {
-  console.log('Listening on port ' + 3000);
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
+  console.log('Listening on port ' + port);
 });
