@@ -6,18 +6,17 @@ import { Router, browserHistory, Route } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 
 import configureStore from './store/configureStore';
-import initialState from './store/initialState';
 
-import LoginForm from './components/loginForm/component';
+import AuthPage from './components/AuthPage';
 
-const store = configureStore(browserHistory, initialState);
+const store = configureStore(browserHistory);
 
 const history = syncHistoryWithStore(browserHistory, store);
 
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
-      <Route path="/" component={LoginForm} />
+      <Route path="/" component={AuthPage} />
     </Router>
   </Provider>, 
   document.getElementById('app')

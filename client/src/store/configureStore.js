@@ -1,18 +1,13 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { routerReducer, routerMiddleware } from 'react-router-redux';
+import { routerMiddleware } from 'react-router-redux';
 import createLogger from 'redux-logger';
 
-import reducers from '../reducers';
+import rootReducer from '../reducers';
 
 
-export default (history, initialState) => {
-
-  const rootReducer = combineReducers({
-    ...reducers,
-    routing: routerReducer
-  });
+export default (history) => {
 
   const enhancers = applyMiddleware(createLogger(), routerMiddleware(history));
 
-  return createStore(rootReducer, initialState, enhancers);
+  return createStore(rootReducer, enhancers);
 }
